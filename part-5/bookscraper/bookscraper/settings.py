@@ -58,9 +58,19 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "bookscraper.pipelines.BookscraperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "bookscraper.pipelines.BookscraperPipeline": 300,
+   'bookscraper.pipelines.SaveToMySQLPipeline': 400,
+
+}
+
+FEEDS = {
+    'booksdata.csv': {
+      'format': 'csv', 
+      'overwrite': True,
+      'encoding': 'utf-8', 
+   }
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
